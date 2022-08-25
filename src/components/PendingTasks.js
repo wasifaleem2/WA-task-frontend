@@ -36,7 +36,7 @@ export default function PendingTasks(props) {
   console.log("pending props", props);
   const TaskDone = (id) => {
     console.log(id);
-    fetch(`http://localhost:3001/api/completed/${id}`, {
+    fetch(`https://watasks.herokuapp.com/api/completed/${id}`, {
       method: "PUT",
       // headers: {},
       // body: {},
@@ -59,7 +59,7 @@ export default function PendingTasks(props) {
   //   const formData = new FormData();
   //   formData.append("date", date);
   //   formData.append("date", time);
-  //   fetch(`http://localhost:3001/api/update/${id}`, {
+  //   fetch(`https://watasks.herokuapp.com/api/update/${id}`, {
   //     method: "PUT",
   //     headers: {
   //       // 'Authorization': 'Bearer' + {token},
@@ -80,7 +80,7 @@ export default function PendingTasks(props) {
   // };
 
   const DeleteTask = (id) => {
-    fetch(`http://localhost:3001/api/deletetask/${id}`, {
+    fetch(`https://watasks.herokuapp.com/api/deletetask/${id}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((resp) => {
@@ -98,7 +98,7 @@ export default function PendingTasks(props) {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/getpendingtasks/${userEmail}`, {
+    fetch(`https://watasks.herokuapp.com/api/getpendingtasks/${userEmail}`, {
       method: "GET",
       headers: {
         // Authorization: `Bearer ${token}`,

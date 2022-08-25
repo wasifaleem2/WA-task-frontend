@@ -26,7 +26,7 @@ export default function Signup() {
     formData.append("userEmail", userEmail);
     formData.append("password", password);
     formData.append("confirmPassword", confirmPassword);
-    fetch(`http://localhost:3001/api/register`, {
+    fetch(`https://watasks.herokuapp.com/api/register`, {
       method: "POST",
       headers: {
         // 'Authorization': 'Bearer' + {token},

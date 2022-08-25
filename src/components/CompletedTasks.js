@@ -26,7 +26,7 @@ export default function PendingTasks(props) {
   const [completedTasks, setCompletedTasks] = useState([]);
   console.log("completed", props.userData.User.userData.email);
   const DeleteTask = (id) => {
-    fetch(`http://localhost:3001/api/deletetask/${id}`, {
+    fetch(`https://watasks.herokuapp.com/api/deletetask/${id}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((resp) => {
@@ -44,7 +44,7 @@ export default function PendingTasks(props) {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/getcompletedtasks/${userEmail}`, {
+    fetch(`https://watasks.herokuapp.com/api/getcompletedtasks/${userEmail}`, {
       method: "GET",
       headers: {
         // Authorization: `Bearer ${token}`,

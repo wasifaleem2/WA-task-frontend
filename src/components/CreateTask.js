@@ -57,7 +57,7 @@ export default function CreateTask(props) {
     formData.append("isCompleted", isCompleted);
     // let newTask = { userEmail, title, date, time, description };
 
-    fetch(`http://localhost:3001/api/addtask`, {
+    fetch(`https://watasks.herokuapp.com/api/addtask`, {
       method: "POST",
       headers: {
         // 'Authorization': 'Bearer' + {token},
