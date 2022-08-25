@@ -24,7 +24,6 @@ export default function PendingTasks(props) {
   const [alert, setAlert] = useState(null);
   const [alertMsg, setAlertMsg] = useState(null);
   const [completedTasks, setCompletedTasks] = useState([]);
-  console.log("completed", props.userData.User.userData.email);
   const DeleteTask = (id) => {
     fetch(`https://watasks.herokuapp.com/api/deletetask/${id}`, {
       method: "DELETE",
@@ -38,7 +37,7 @@ export default function PendingTasks(props) {
         );
         setAlert(resp.status);
         setAlertMsg(resp.msg);
-        setOpenSnack(true)
+        setOpenSnack(true);
       });
     });
   };
@@ -53,8 +52,8 @@ export default function PendingTasks(props) {
       },
     }).then((result) => {
       result.json().then((resp) => {
-        console.warn("all tasks", resp.allTasks[0].title);
-                //.sort().reverse() descendeing order
+        // console.warn("all tasks", resp.allTasks[0].title);
+        //.sort().reverse() descendeing order
         setCompletedTasks(resp.allTasks.sort().reverse());
         // setAlert(resp.status);
         // setAlertMsg(resp.msg);

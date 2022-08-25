@@ -9,14 +9,14 @@ import {
 
 //Login action
 const loginAction = (userCredentials) => {
-  console.log("action", userCredentials);
+  // console.log("action", userCredentials);
   return {
     type: LOGIN_SUCCESS,
     userCredentials: userCredentials,
   };
 };
 const logoutAction = (userCredentials) => {
-  console.log("action logout", userCredentials);
+  // console.log("action logout", userCredentials);
   return {
     type: LOGOUT,
     userCredentials: userCredentials,

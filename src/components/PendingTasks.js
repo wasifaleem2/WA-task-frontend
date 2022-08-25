@@ -17,41 +17,37 @@ import {
   TextField,
   Modal,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import CancelIcon from "@mui/icons-material/Cancel";
+
 import DoneIcon from "@mui/icons-material/Done";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
 
 export default function PendingTasks(props) {
   const [userEmail, setUserEmail] = useState(
     props.userData.User.userData.email
   );
-  
+
   const [pendingTasks, setPendingTasks] = useState([]);
   const [openSnack, setOpenSnack] = React.useState(false);
   const [alert, setAlert] = useState();
   const [alertMsg, setAlertMsg] = useState();
-  console.log("pending props", props);
   const TaskDone = (id) => {
-    console.log(id);
     fetch(`https://watasks.herokuapp.com/api/completed/${id}`, {
       method: "PUT",
       // headers: {},
       // body: {},
     }).then((result) => {
       result.json().then((resp) => {
-        console.log(resp);
+        // console.log(resp);
         setPendingTasks(
           pendingTasks.filter((val) => {
             return val._id != id;
           })
         );
-        setAlert(resp.status)
-        setAlertMsg(resp.msg)
-        setOpenSnack(true)
-        console.log(props.load)
+        setAlert(resp.status);
+        setAlertMsg(resp.msg);
+        setOpenSnack(true);
+        // console.log(props.load)
       });
     });
   };
@@ -90,9 +86,9 @@ export default function PendingTasks(props) {
             return val._id != id;
           })
         );
-        setAlert(resp.status)
-        setAlertMsg(resp.msg)
-        setOpenSnack(true)
+        setAlert(resp.status);
+        setAlertMsg(resp.msg);
+        setOpenSnack(true);
       });
     });
   };
@@ -107,25 +103,32 @@ export default function PendingTasks(props) {
       },
     }).then((result) => {
       result.json().then((resp) => {
-        console.warn("all tasks", resp.allTasks[0].title);
+        // console.warn("all tasks", resp.allTasks[0].title);
         //.sort().reverse() descendeing order
         setPendingTasks(resp.allTasks.sort().reverse());
-        setAlert(resp.status)
+        setAlert(resp.status);
         setAlertMsg(resp.msg);
-        
       });
     });
   }, [props.load]);
-  //()=>pull_data
 
   return (
     <ThemeProvider theme={theme}>
       <div>
-      <Snackbar open={openSnack} autoHideDuration={4000} onClose={()=>setOpenSnack(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert onClose={()=>setOpenSnack(false)} severity={`${alert}`} sx={{ width: '90%' }}>
-          {alertMsg}
-        </Alert>
-      </Snackbar>
+        <Snackbar
+          open={openSnack}
+          autoHideDuration={4000}
+          onClose={() => setOpenSnack(false)}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert
+            onClose={() => setOpenSnack(false)}
+            severity={`${alert}`}
+            sx={{ width: "90%" }}
+          >
+            {alertMsg}
+          </Alert>
+        </Snackbar>
         {/* <CreateTask reload="false" /> */}
         <div className="margin-top">
           <div className="center">
@@ -148,8 +151,11 @@ export default function PendingTasks(props) {
                       }}
                     >
                       <CardContent>
-                        <Typography variant="h5" color={theme.palette.light.main}>
-                            {result.title}
+                        <Typography
+                          variant="h5"
+                          color={theme.palette.light.main}
+                        >
+                          {result.title}
                         </Typography>
                         <Typography
                           style={{
@@ -160,15 +166,22 @@ export default function PendingTasks(props) {
                         >
                           Time:{" "}
                           <span
-                            style={{ color: `${theme.palette.light.secondary}` }}
+                            style={{
+                              color: `${theme.palette.light.secondary}`,
+                            }}
                           >
                             {result.date}
                           </span>
                         </Typography>
-                        <Typography style={{ display: "inline-block" }} color={theme.palette.light.secondary}>
+                        <Typography
+                          style={{ display: "inline-block" }}
+                          color={theme.palette.light.secondary}
+                        >
                           Date:{" "}
                           <span
-                            style={{ color: `${theme.palette.light.secondary}` }}
+                            style={{
+                              color: `${theme.palette.light.secondary}`,
+                            }}
                           >
                             {result.time}
                           </span>
@@ -176,7 +189,9 @@ export default function PendingTasks(props) {
                         <Typography color={theme.palette.light.secondary}>
                           Description:{" "}
                           <span
-                            style={{ color: `${theme.palette.light.secondary}` }}
+                            style={{
+                              color: `${theme.palette.light.secondary}`,
+                            }}
                           >
                             {result.description}
                           </span>
@@ -186,7 +201,9 @@ export default function PendingTasks(props) {
                         <Button
                           variant="contained"
                           size="small"
-                          style={{ backgroundColor: `${theme.palette.light.main}` }}
+                          style={{
+                            backgroundColor: `${theme.palette.light.main}`,
+                          }}
                           onClick={() => {
                             TaskDone(result._id);
                           }}
@@ -204,7 +221,9 @@ export default function PendingTasks(props) {
                         <Button
                           variant="contained"
                           size="small"
-                          style={{ backgroundColor: `${theme.palette.light.danger}` }}
+                          style={{
+                            backgroundColor: `${theme.palette.light.danger}`,
+                          }}
                           onClick={() => {
                             DeleteTask(result._id);
                           }}

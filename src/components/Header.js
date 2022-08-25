@@ -24,7 +24,6 @@ export default function Header(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("header props", props);
   const Logout = ()=>{
     props.userDataHandler()
     setAnchorEl(null);

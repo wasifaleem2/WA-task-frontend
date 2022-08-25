@@ -16,15 +16,9 @@ const initialState = {
 export default function User(state = initialState, action) {
   // const { type, userCredentials } = action;
   switch (action.type) {
-    // case REGISTER_SUCCESS:
-    //   return { ...state, isLoggedIn: false };
-    // case REGISTER_FAIL:
-    //   return { ...state, isLoggedIn: false };
     case LOGIN_SUCCESS:
-      console.log("reducer", action);
+      // console.log("reducer", action);
       return { ...state, isLoggedIn: true, userData: action.userCredentials };
-    // case LOGIN_FAIL:
-    //   return { ...state, isLoggedIn: false, userData: null };
     case LOGOUT:
       return { ...state, isLoggedIn: false, userData: null };
     default:
